@@ -148,4 +148,4 @@ On mettra dans l’url :
     X.com/temp_reg.php?identifiant=X&password=X
     Ne pas oublier de supprimer le fichier après
 
-	Afin d’accéder au login pour les agents et admin => Siteweb.com/php/logiin.php
+	Afin d’accéder au login pour les agents et admin => X.com/login.html
