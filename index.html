@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="description" content="ceci est la page de référence">
+    <title>Notre première page</title>
+    <link rel="stylesheet" href="Css/index.css"/>
+    <style>
+
+        #cursor1, #B2cursor1, #B3cursor1{
+            background: black;
+            border-radius: 90%;
+            height:20px;
+            width:20px;
+            position: absolute;
+            z-index: 1;
+            margin-left:0px;
+        }
+        #cursor2, #B2cursor2, #B3cursor2{
+            background: black;
+            border-radius: 90%;
+            height:20px;
+            width:20px;
+            position: absolute;
+            margin-left:200px;
+            z-index: 1;
+        }
+        #thumbar, #B2thumbar, #B3thumbar{
+            width:200px;
+            height:10px;
+            position: absolute;
+            background-color: red;
+            margin-top: 4px;
+        }
+        #thumbarclear, #B2thumbarclear, #B3thumbarclear{
+            width:200px;
+            height:10px;
+            position: absolute;
+            background-color: lightgrey;
+            border-radius: 30px;
+            margin-top: 4px;
+        }
+
+        #year,#km,#price{
+            padding-left: 8%;
+    margin-left: 50px;
+    width: 230px;
+    height: 101px;
+            
+        }
+        #pyear{
+            text-align: center;
+        }
+        #filtre{
+            display: flex;
+    flex-direction: row;
+    /*margin-left: -27%;*/
+        }
+        #gallery{
+            padding-top: 54px;
+            display: flex;
+            flex-flow: wrap;
+        }
+        .carpresentation{
+            background-color: lightgray;
+            width: 400px;
+            height: 250px;
+            overflow: hidden;
+            margin: 20px;
+        }
+        .carpresentation .h2{
+            text-align: center;
+            margin-top: -3px;
+        }
+        .carpresentation img{
+            width: 350px;
+    height: 200px;
+    position: relative;
+    top: -19px;
+    left: 23px;
+        }
+        .carpresentation:hover .aright{
+            display: block;
+            position: relative;
+            font-size: 92px;
+            top: -290px;
+            left: 350px;
+        }
+        
+        .aright,.aleft{
+            display: none;
+        }
+        .carpresentation:hover .aleft{
+            display: block;
+            position: relative;
+            font-size: 92px;
+            top: -179px;
+        }
+        
+        .carinf{
+            position: relative;
+    display: flex;
+    top: -36px;
+    left: 79px;
+        }
+        #min1,#minprice1,#minyear1{
+            top: 24px;
+    left: -8px;
+    width: 50px;
+    position: relative;
+        }
+        #max1,#maxprice1,#maxyear1{
+            top: 24px;
+    left: 150px;
+    width: 50px;
+    position: relative;
+        }
+        .h2{
+            text-align: center;
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+        }
+        
+        #pprice{
+            margin-left: 40%;
+}
+        #pkm{
+            margin-left: 31%;
+}
+
+
+        .selected{
+            color:red;
+        }
+
+        nav{
+            background-color: lightgray;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+        }
+
+        .nav1{
+            
+            padding-left: 46px;
+    margin-top: 14px;
+    margin-left: 11%;
+        }
+        .nav2{
+            margin-top: 14px;
+        }
+        .nav3{
+            padding-right: 46px;
+            margin-top: 14px;
+        }
+        #icong{
+
+            position: absolute;
+}
+    </style>
+  </head>
+  <body>
+    <img id="icong" src="assets/icon_garage.png" width="150px" height="50px">
+    <nav>
+        <a class="nav1 selected" href="index.html">Voiture</a>
+        <a class="nav2" href="php/affiche_presta.php">Préstations</a>
+        <a class="nav3" href="Mainavis.php">Avis</a>
+    </nav>
+    <div id="filtre"> 
+        <div id="km"> 
+            <p id="pkm">Kilometrage</p>
+            <div id="cursor1" onclick="mooving('cursor1')"></div>
+            <div id="cursor2" onclick="mooving('cursor2')"></div>
+            <div id="thumbarclear"></div>
+            <div id="thumbar"></div>
+            <input id="min1" onchange="changeinputkm()" >
+            <input id="max1" onchange="changeinputkm()">
+            
+        </div>  
+        <div id="price"> 
+            <p id="pprice">Prix</p>
+            <div id="B2cursor1" onclick="B2mooving('B2cursor1')"></div>
+            <div id="B2cursor2" onclick="B2mooving('B2cursor2')"></div>
+            <div id="B2thumbarclear"></div>
+            <div id="B2thumbar"></div>
+            <input id="minprice1" onchange="changeinputprice()" >
+            <input id="maxprice1" onchange="changeinputprice()">
+        </div>  
+        <div id="year"> 
+            <p id="pyear">Année de construction</p>
+            <div id="B3cursor1" onclick="B3mooving('B3cursor1')"></div>
+            <div id="B3cursor2" onclick="B3mooving('B3cursor2')"></div>
+            <div id="B3thumbarclear"></div>
+            <div id="B3thumbar"></div>
+            <input id="minyear1" onchange="changeinputyear()" >
+            <input id="maxyear1" onchange="changeinputyear()">
+        </div>  
+    </div>
+
+    <div id="gallery">
+        <div class="carpresentation">
+            <a class="h2" href="detail.php?id=1">Honda</a>
+            <img src="1.png">
+            <a class="aleft"><</a>
+            <a class="aright">></a>
+            <div class="carinf">
+                <p>Prix: 3000</p>
+                <p>KM: 50000</p>
+                <p>Année: 2020</p>
+            </div>
+        </div>
+        <div class="carpresentation">
+            <a class="h2" href="detail.php?id=1">Honda</a>
+            <img id="img1" src="assets/1.png">
+            <a class="aleft" onclick="changeimg(1,1,'left')"><</a>
+            <a class="aright" onclick="changeimg(1,1,'right')">></a>
+            <div class="carinf">
+                <p>Prix: 3000</p>
+                <p>KM: 50000</p>
+                <p>Année: 2020</p>
+            </div>
+        </div>
+        <div class="carpresentation">
+            <h2>Honda</h2>
+            <img id="img2" src="assets/1.png">
+            <a class="aleft" onclick="changeimg(2,2,'left')" ><</a>
+            <a class="aright" onclick="changeimg(2,2,'right')">></a>
+            <div class="carinf">
+                <p>Prix: 3000</p>
+                <p>KM: 50000</p>
+                <p>Année: 2020</p>
+            </div>
+        </div>
+        <div class="carpresentation">
+            <h2>Honda</h2>
+            <img id="img3" src="assets/1.png">
+            <a class="aleft" onclick="changeimg(3,3,'left')"><</a>
+            <a class="aright" onclick="changeimg(3,3,'right')">></a>
+            <div class="carinf">
+                <p>Prix: 3000</p>
+                <p>KM: 50000</p>
+                <p>Année: 2020</p>
+            </div>
+        </div>
+
+    </div>
+    <script src="Js/bar1.js"></script>
+    <script src="Js/bar2.js"></script>
+    <script src="Js/bar3.js"></script>
+    <script>
+
+this.Id = id;
+            this.carName = name;
+            this.carPrice = price;
+            this.buildYear = year;
+            this.kilometer = kilometers;
+            this.carImg =Img;
+            this.actualImage=actualimg;
+
+       function printcar(){
+        section=document.getElementById('gallery')
+        section.innerHTML=""
+        article=""
+        for(i=0;i<okcar.length;i++){
+            article+="<div class=\"carpresentation\"><a class=\"h2\" href=\"detail.php?id="+okcar[i].Id+"\">"+okcar[i].carName+"</a><img id=\"img"+okcar[i].Id+"\" src=\"Assets/"+okcar[i].carImg[0]+"\"><a class=\"aleft\" onclick=\"changeimg("+okcar[i].Id+","+i+",'left')\"><</a><a class=\"aright\" onclick=\"changeimg("+okcar[i].Id+","+i+",'right')\">></a><div class=\"carinf\"><p>Prix: "+okcar[i].carPrice+"</p><p>KM: "+okcar[i].kilometer+"</p><p>Année: "+okcar[i].buildYear+"</p></div></div>"
+        }
+        section.insertAdjacentHTML("beforeend",article);
+}
+    </script>
+    <script>
+
+
+let okcar=[]
+let minimumkm=0
+let maximumkm=0
+let minimumyear=0
+let maximumyear=0
+let minimumprice=0
+let maximumprice=0
+
+let triload=0
+function trichoice(min,max)
+{
+    console.log("Triload : "+triload)
+    if(triload==0){ 
+        triload=1
+        trikm(minimumkm,maximumkm)
+        
+    }else if(triload==1){
+        triload=2
+        triyear(minimumyear,maximumyear)
+        
+    }else if(triload==2){
+        triload=3
+        triprice(minimumprice,maximumprice)
+        
+    }else if(triload==3){
+        triload=0
+        printcar()
+    }
+}
+
+function trikm(min,max){
+    minimumkm=min
+    maximumkm=max
+    rcar=[]
+    for(i=0;i<allcar.length;i++){
+        if(allcar[i].kilometer>=min && allcar[i].kilometer<=max){
+            rcar.push(allcar[i])
+        }
+    }
+    console.log("okcar "+okcar)
+    okcar=rcar
+    trichoice(minimumyear,maximumyear)
+}
+
+function triprice(min,max){
+    minimumprice=min
+    maximumprice=max
+    rcar=[]
+    for(i=0;i<okcar.length;i++){
+        if(okcar[i].carPrice>=min && okcar[i].carPrice<=max){
+            rcar.push(okcar[i])
+        }
+    }
+    console.log(rcar)
+    okcar=rcar
+    console.log("okcar "+okcar)
+    trichoice()
+}
+
+function triyear(min,max){
+    minimumyear=min
+    maximumyear=max
+    rcar=[]
+    for(i=0;i<okcar.length;i++){
+        if(okcar[i].buildYear>=min && okcar[i].buildYear<=max){
+            rcar.push(okcar[i])
+        }
+    }
+    console.log(rcar)
+    okcar=rcar
+    console.log("okcar "+okcar)
+    trichoice()
+}
+    </script>
+    <script>
+        function changeimg(id,refinallcar,move){
+            lastimguse=allcar[refinallcar].actualImage
+            if(move=='right'){ 
+                if(lastimguse+1<=allcar[refinallcar].carImg.length-1){ 
+                    document.getElementById("img"+id).src="Assets/"+allcar[refinallcar].carImg[lastimguse+1]
+                    allcar[refinallcar].actualImage=lastimguse+1
+                }else{
+                    document.getElementById("img"+id).src="Assets/"+allcar[refinallcar].carImg[0]
+                    allcar[refinallcar].actualImage=0
+                }
+            }else{
+                if(lastimguse-1>=0){ 
+                    document.getElementById("img"+id).src="Assets/"+allcar[refinallcar].carImg[lastimguse-1]
+                    allcar[refinallcar].actualImage=lastimguse-1
+                }else{
+                    let maxval=allcar[refinallcar].carImg.length-1
+                    document.getElementById("img"+id).src="Assets/"+allcar[refinallcar].carImg[maxval]
+                    allcar[refinallcar].actualImage=maxval
+                }
+            }
+        }
+    </script>
+    <script>
+        var str=""
+function Requete_Get(url,_fonc,params){
+    if( typeof(params) == 'undefined' ){
+        params = "";
+    }else{
+        params="?"+params
+    }
+    var http=new XMLHttpRequest()
+    console.log(url+params)
+    http.open("GET",url+params,true);
+    http.onreadystatechange= function()
+    {
+        if(http.readyState == 4 && http.status == 200){
+            str=http.responseText
+            _fonc(str)
+        }
+        
+    }
+    http.send(null)
+    
+}
+
+    </script>
+    <script>
+        function kmSearching(){
+            console.log("Wanted to change KM")
+        }
+
+        function Car(id,name, price, year, kilometers,Img,actualimg) {
+            this.Id = id;
+            this.carName = name;
+            this.carPrice = price;
+            this.buildYear = year;
+            this.kilometer = kilometers;
+            this.carImg =Img;
+            this.actualImage=actualimg;
+        }
+
+        allcar=[]
+        function tri(rslt){
+            //console.log(rslt)
+            let name=''
+            let carPrice=''
+            let buildYear=''
+            let kilometer=''
+            let carImg=[]
+            let actualImage=''
+            let id=""
+            let image=""
+            let actual=0
+            let islist=0
+            while(rslt!=""){
+                //console.log("list : "+ islist)
+               // console.log("Act : "+ actual)
+                if(rslt[0]!="[" && rslt[0]!="]"){ 
+                    if(rslt[0] != "/" || (rslt[0] == "/" && islist == 1)){ 
+                        if(actual==0){
+                            id=id+rslt[0]
+                        }
+                        if(actual==1){
+                            name=name+rslt[0]
+                        }else if(actual==2){
+                            carPrice=carPrice+rslt[0]
+                        }else if(actual==3){
+                            buildYear=buildYear+rslt[0]
+                        }else if(actual==4){
+                            kilometer=kilometer+rslt[0]
+                        }else if(actual==5){
+
+                            //console.log(rslt)
+                            if(rslt[0]=="/"){
+                                carImg.push(image)
+                                console.log(carImg)
+                                image=""
+                            }else{
+                                image=image+rslt[0]
+                            }
+                        }
+                    }else{
+                       // console.log("modif actual "+actual)
+                        if(actual==5){
+                            actual=0
+                            
+                            console.log(id+" "+name+" "+carPrice+" "+buildYear+" "+kilometer+" "+carImg+" "+0)
+                            ncar=new Car(id,name,carPrice,buildYear,kilometer,carImg,0)
+                            allcar.push(ncar)
+
+
+                            name=''
+                            carPrice=''
+                            buildYear=''
+                            kilometer=''
+                            carImg=[]
+                            actualImage=''
+                            id=""
+                            image=""
+
+                        }else{
+                            actual+=1
+                        }
+                        
+                    }
+                }else if(rslt[0]=="["){
+                    islist=1
+                }else if(rslt[0]=="]"){
+                    islist=0
+                    carImg.push(image)
+                }
+                rslt=rslt.substring(1)
+            }
+
+            minmaxkm()
+            minmaxprice()
+            minmaxyear()
+        }
+        
+        //ncar=new Car("honda",20000,2023,500000,['1.png','2.png','3.png'],0)
+        //allcar.push(ncar)
+       // console.log(allcar[0].carName)
+
+
+        Requete_Get("php/request_car.php",tri)
+    </script>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+ try
+    {
+        $db = new PDO('mysql:host=localhost;dbname=garage;charset=utf8', 'root', '');
+    }
+    catch (Exception $e)
+    {
+            die('Erreur : ' . $e->getMessage());
+    }
+    $sqlQuery ="SELECT * FROM `avis` WHERE ValiderAvis=1;" ; 
+    $recipesStatement = $db->prepare($sqlQuery);
+    $recipesStatement->execute();
+    $recipes = $recipesStatement->fetchAll();  
+    //print_r($recipes);
+
+    $result=$recipes;

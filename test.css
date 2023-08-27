@@ -1,0 +1,17 @@
+<style>
+    #1star:hover{
+        content:"★"
+    }
+    #2star:hover #1star{
+        content:"★"
+    }
+    #3star:hover #1star #2star{
+        content:"★"
+    }
+    #4star:hover #1star #3star #2star{
+        content:"★"
+    }
+    #5star:hover #1star #4star #3star #2star{
+        content:"★"
+    }
+        </style>
