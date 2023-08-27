@@ -39,7 +39,6 @@ Avis :
     PRIMARY KEY (`idavis`)
     ) 
 
-
 Message
     CREATE TABLE `message` (
     `IDmessage` int(11) NOT NULL AUTO_INCREMENT,
@@ -141,11 +140,12 @@ Pour créer un admin faire un fichier php contenant que l’on peut appeler temp
         }
     }
 
-
 On mettra dans l’url :
     X =A modifier par les informations correpondantes
 
     X.com/temp_reg.php?identifiant=X&password=X
     Ne pas oublier de supprimer le fichier après
 
-	Afin d’accéder au login pour les agents et admin => X.com/login.html
+   Afin d’accéder au login pour les agents et admin => X.com/login.html
+
+
