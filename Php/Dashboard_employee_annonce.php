@@ -160,7 +160,7 @@ if(isset($_COOKIE['identifiant']) && isset($_COOKIE['agence']) && isset($_COOKIE
 
 //print_r($imglstf);
 for($i=0;$i<count($imglstf);$i++){
-    echo '<article><h1 class="nom">'.$recipes[$i]["nom"].'</h1><img class="onlyimg" src="../'.$imglstf[$i][0].'"></img><p class="parid"> '.$recipes[$i]["ID"].' </p><button onclick="modif('.$recipes[$i]['ID'].')"> Modifier l\'annonce</button><button onclick="supprimer('.$recipes[$i]['ID'].')"> Supprimer l\'annonce</button>  </article>';
+    echo '<article><h1 class="nom">'.$recipes[$i]["nom"].'</h1><img class="onlyimg" src="../assets/'.$imglstf[$i][0].'"></img><p class="parid"> '.$recipes[$i]["ID"].' </p><button onclick="modif('.$recipes[$i]['ID'].')"> Modifier l\'annonce</button><button onclick="supprimer('.$recipes[$i]['ID'].')"> Supprimer l\'annonce</button>  </article>';
 }
 ?>
 
